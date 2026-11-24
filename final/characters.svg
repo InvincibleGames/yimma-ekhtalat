@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 700" role="img" aria-label="جدة بحرينية سعيدة وحفيدها">
+<defs>
+<linearGradient id="robe" x2="1" y2="1"><stop stop-color="#111012"/><stop offset=".42" stop-color="#30252a"/><stop offset="1" stop-color="#060607"/></linearGradient>
+<linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0b4"/><stop offset=".4" stop-color="#e7ab45"/><stop offset="1" stop-color="#ac601f"/></linearGradient>
+<radialGradient id="face" cx=".35" cy=".25" r=".9"><stop stop-color="#ffd9a9"/><stop offset=".5" stop-color="#eeb484"/><stop offset="1" stop-color="#b87555"/></radialGradient>
+<linearGradient id="white" x2="1" y2="1"><stop stop-color="#fffdf3"/><stop offset=".68" stop-color="#e6d7be"/><stop offset="1" stop-color="#cbb799"/></linearGradient>
+<filter id="shadow"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+<ellipse cx="480" cy="661" rx="383" ry="23" fill="#160c09" opacity=".4" filter="url(#shadow)"/>
+<!-- grandmother abaya silhouette -->
+<path d="M70 660Q83 485 135 346Q167 270 207 221Q278 165 368 215Q440 298 470 449L511 657Z" fill="url(#robe)" stroke="#8b6b36" stroke-width="10"/>
+<path d="M158 336Q118 442 108 648M403 332Q440 451 460 649" stroke="url(#gold)" stroke-width="12" fill="none"/>
+<path d="M181 329Q215 504 236 659M358 327Q346 512 344 659" stroke="#bf8844" stroke-width="8" fill="none"/>
+<path d="M202 338L280 606L345 338" fill="none" stroke="url(#gold)" stroke-width="7"/>
+<!-- jewel embroidery on abaya -->
+<g stroke="#e5ac58" fill="none" opacity=".94">
+<path d="M104 572q30-34 60 0t60 0M361 572q27-34 61 0t57 0" stroke-width="6"/>
+<path d="M100 588l22 15 23-15 23 15 22-15M380 588l22 15 23-15 22 15" stroke-width="4"/>
+</g>
+<g fill="#e9ba68"><circle cx="140" cy="612" r="3"/><circle cx="158" cy="620" r="3"/><circle cx="176" cy="628" r="3"/><circle cx="194" cy="612" r="3"/><circle cx="212" cy="620" r="3"/><circle cx="230" cy="628" r="3"/><circle cx="248" cy="612" r="3"/><circle cx="266" cy="620" r="3"/><circle cx="284" cy="628" r="3"/><circle cx="302" cy="612" r="3"/><circle cx="320" cy="620" r="3"/><circle cx="338" cy="628" r="3"/><circle cx="356" cy="612" r="3"/><circle cx="374" cy="620" r="3"/><circle cx="392" cy="628" r="3"/><circle cx="410" cy="612" r="3"/></g>
+<!-- grandmother hijab -->
+<path d="M140 328Q113 251 139 184Q177 82 282 88Q386 87 425 186Q462 284 421 370Q382 294 343 255Q218 292 140 328Z" fill="#171518" stroke="url(#gold)" stroke-width="13"/>
+<path d="M159 271Q152 128 278 112Q404 135 403 277" fill="none" stroke="#cda05d" stroke-width="6" stroke-dasharray="13 5"/>
+<!-- face -->
+<ellipse cx="278" cy="238" rx="107" ry="128" fill="url(#face)" stroke="#a76b4c" stroke-width="5"/>
+<path d="M201 153Q269 101 353 162" fill="none" stroke="#151215" stroke-width="30"/>
+<path d="M204 210q32-20 59-1M298 207q30-21 54 1" stroke="#563b35" stroke-width="6" fill="none"/>
+<ellipse cx="239" cy="229" rx="9" ry="12" fill="#352926"/><ellipse cx="325" cy="226" rx="9" ry="12" fill="#352926"/>
+<g fill="none" stroke="#2f2422" stroke-width="5"><ellipse cx="239" cy="228" rx="35" ry="30"/><ellipse cx="326" cy="226" rx="35" ry="30"/><path d="M272 228q11-13 20 0M201 218l-18-9M361 216l16-8"/></g>
+<path d="M279 226q-16 38-4 47q9 6 17-2" stroke="#b77555" fill="none" stroke-width="5"/>
+<path d="M228 291Q277 343 341 289Q327 345 278 350Q237 345 228 291Z" fill="#6d342c"/>
+<path d="M239 294Q277 313 330 294" fill="none" stroke="#fff4e8" stroke-width="12"/>
+<circle cx="197" cy="263" r="17" fill="#e3a27c" opacity=".55"/><circle cx="365" cy="259" r="17" fill="#e3a27c" opacity=".55"/>
+<!-- waving arm -->
+<path d="M424 406Q493 354 524 268L555 213Q578 193 589 215Q589 232 568 250Q558 375 499 459Z" fill="url(#robe)" stroke="#b7803a" stroke-width="10"/>
+<path d="M524 268q-22-42-5-68q17-22 32-10l-2 41q14-62 32-47q11 12-3 58q24-35 37-16q8 13-28 55q-21 32-63 16Z" fill="url(#face)" stroke="#a96f50" stroke-width="5"/>
+<!-- grandson thobe body -->
+<path d="M573 671Q592 474 623 386Q636 355 675 340L826 341Q864 363 879 424L933 667Z" fill="url(#white)" stroke="#b8a78f" stroke-width="9"/>
+<path d="M691 356L692 663M800 357L803 664" stroke="#cfbca0" stroke-width="6"/>
+<path d="M750 378L745 647" stroke="#dbc5a5" stroke-width="4"/><circle cx="753" cy="412" r="5" fill="#ae966e"/><circle cx="753" cy="453" r="5" fill="#ae966e"/>
+<!-- grandson neck and ears -->
+<rect x="700" y="315" width="92" height="81" rx="32" fill="#dca07d" stroke="#b87852" stroke-width="4"/>
+<ellipse cx="650" cy="270" rx="25" ry="39" fill="#e8b18b"/><ellipse cx="841" cy="270" rx="24" ry="38" fill="#e9b18d"/>
+<ellipse cx="744" cy="266" rx="102" ry="118" fill="url(#face)" stroke="#af7554" stroke-width="5"/>
+<!-- hair -->
+<path d="M646 239Q634 167 679 141Q716 102 764 122Q824 118 843 178L838 226Q803 206 797 178Q782 219 753 210Q739 180 716 206Q690 212 679 195Z" fill="#29201b"/>
+<!-- boy traditional white headwrap -->
+<path d="M632 198Q631 108 732 104Q835 97 856 187Q841 215 818 201Q795 169 760 159Q693 165 658 211Z" fill="url(#white)" stroke="#c8b7a0" stroke-width="10"/>
+<path d="M649 145Q738 94 818 146M650 168Q735 131 837 166" fill="none" stroke="#efe5d5" stroke-width="17" opacity=".82"/>
+<path d="M631 209Q721 174 852 216" fill="none" stroke="#d9c7b1" stroke-width="17"/>
+<!-- expressive eyes -->
+<path d="M679 248Q712 225 735 245M757 243Q785 218 814 244" stroke="#362722" stroke-width="8" fill="none"/>
+<ellipse cx="709" cy="256" rx="19" ry="24" fill="#fff6ec"/><ellipse cx="792" cy="254" rx="19" ry="24" fill="#fff6ec"/>
+<ellipse cx="711" cy="260" rx="10" ry="15" fill="#5b3528"/><ellipse cx="794" cy="258" rx="10" ry="15" fill="#5b3528"/><circle cx="707" cy="255" r="4" fill="#fff"/><circle cx="790" cy="252" r="4" fill="#fff"/>
+<path d="M742 269q-9 20 4 25" stroke="#be805e" stroke-width="5" fill="none"/>
+<path d="M695 308Q748 358 809 304Q779 372 746 369Q714 368 695 308Z" fill="#682d2b"/>
+<path d="M708 312Q744 330 796 312" stroke="#fff8e8" stroke-width="14" fill="none"/>
+<ellipse cx="672" cy="293" rx="18" ry="11" fill="#e38f76" opacity=".5"/><ellipse cx="819" cy="290" rx="18" ry="11" fill="#e38f76" opacity=".5"/>
+<!-- boy folded hands -->
+<path d="M622 445Q694 457 738 478L825 451Q857 461 838 500Q786 534 738 530Q664 520 613 491Z" fill="url(#white)" stroke="#c8ae8e" stroke-width="9"/>
+<path d="M708 483Q731 454 762 465L786 492Q786 519 760 525L710 513Z" fill="#e9aa82" stroke="#af7859" stroke-width="5"/>
+<!-- ground sparkle -->
+<g fill="#ffdf91"><path d="M522 576l8 20 20 7-20 6-8 22-7-22-20-6 20-7Z"/><circle cx="570" cy="633" r="6"/><circle cx="917" cy="537" r="7"/></g>
+</svg>
