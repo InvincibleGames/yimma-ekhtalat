@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="150" viewBox="0 0 160 150"><defs>
+<linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff5c0"/><stop offset=".23" stop-color="#f2c76f"/><stop offset=".47" stop-color="#bd7b30"/><stop offset=".76" stop-color="#f7d88b"/><stop offset="1" stop-color="#87501f"/></linearGradient>
+<linearGradient id="w" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#9b693f"/><stop offset=".44" stop-color="#67402c"/><stop offset="1" stop-color="#2c1b18"/></linearGradient>
+<linearGradient id="sand" x1="0" y1="0" x2=".3" y2="1"><stop stop-color="#f6d7a1"/><stop offset=".54" stop-color="#c18b62"/><stop offset="1" stop-color="#81533e"/></linearGradient>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#74cdd4"/><stop offset=".35" stop-color="#178ea8"/><stop offset="1" stop-color="#0d627e"/></linearGradient>
+<radialGradient id="warm"><stop stop-color="#ffeab2" stop-opacity=".48"/><stop offset="1" stop-color="#ffeab2" stop-opacity="0"/></radialGradient>
+<radialGradient id="shadow"><stop stop-color="#110a08" stop-opacity=".38"/><stop offset="1" stop-color="#110a08" stop-opacity="0"/></radialGradient>
+<linearGradient id="candy" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5ee"/><stop offset=".28" stop-color="#ff9eb8"/><stop offset=".64" stop-color="#e34c80"/><stop offset="1" stop-color="#a62450"/></linearGradient>
+</defs><ellipse cx="82" cy="119" rx="40" ry="11" fill="url(#shadow)"/><circle cx="80" cy="73" r="48" fill="#6a3e2b" stroke="#705037" stroke-width="5"/><ellipse cx="61" cy="56" rx="16" ry="12" fill="#fff7d7" opacity=".48"/><path d="M43 95q37 34 70 0" stroke="#111" stroke-width="4" opacity=".15" fill="none"/><path d="M22 138H139" stroke="#fff0c8" opacity=".1" stroke-width="3"/></svg>
