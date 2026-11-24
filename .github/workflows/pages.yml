@@ -25,6 +25,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+      - name: Ensure artifact is indexed before deployment
+        run: sleep 12
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
