@@ -3,6 +3,8 @@ on:
   push:
     branches: [release/game007-visual, main]
     paths: ['game-007/**', '.github/workflows/game-007-qa.yml']
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
