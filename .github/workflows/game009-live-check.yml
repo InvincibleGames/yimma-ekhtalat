@@ -1,0 +1,48 @@
+name: GAME-009 Live Pages Acceptance
+on:
+  workflow_run:
+    workflows: ["Deploy Yimma Ekhtalat to GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Verify release endpoint over HTTPS
+        run: |
+          python3 - <<'PY'
+          import time,urllib.request
+          base='https://invinciblegames.github.io/yimma-ekhtalat/'
+          paths={
+            '':'final/',
+            'final/':'يمّه اختلط!',
+            'final/game.js':'YimmaQA',
+            'final/styles.css':'.world-card',
+            'final/characters.svg':'<svg',
+            'final/app-icon.svg':'<svg',
+            'game-007/':'GAME-007'
+          }
+          for path,needle in paths.items():
+              final=None
+              for attempt in range(12):
+                  try:
+                      u=base+path
+                      with urllib.request.urlopen(urllib.request.Request(u,headers={'User-Agent':'InvincibleGames-Release-QA'}),timeout=16) as resp:
+                          data=resp.read().decode('utf-8')
+                          resolved=resp.url
+                          if needle in data or (path=='' and 'final/' in resolved):
+                              print('LIVE PASS',path or 'root',len(data),resolved)
+                              final=True
+                              break
+                          raise AssertionError('Expected content missing in '+u)
+                  except Exception as e:
+                      final=str(e)
+                      time.sleep(5)
+              if final is not True:
+                  raise SystemExit('LIVE FAIL '+path+' '+str(final))
+          print('PASS: live root, final runtime, original characters, and old GAME-007 all reachable')
+          PY
