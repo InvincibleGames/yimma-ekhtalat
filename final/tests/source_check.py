@@ -1,7 +1,7 @@
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import re
-p=Path("release/final")
+p=Path("final")
 assert (p/"index.html").exists()
 assert (p/"styles.css").exists()
 assert (p/"game.js").exists()
