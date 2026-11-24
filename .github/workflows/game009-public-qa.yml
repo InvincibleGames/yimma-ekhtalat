@@ -1,0 +1,40 @@
+name: GAME-009 Complete Release QA
+on:
+  push:
+    branches: [release/game-009-complete, main]
+    paths: ['final/**', '.github/workflows/game009-public-qa.yml']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser dependencies
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Verify complete visual and game sources
+        run: |
+          python3 final/tests/source_check.py
+          node --check final/game.js
+          node --check final/tests/browser_smoke.mjs
+      - name: Run desktop and mobile Playwright acceptance
+        run: |
+          python3 -m http.server 8977 --directory . >/tmp/final-yimma.log 2>&1 &
+          sleep 2
+          node final/tests/browser_smoke.mjs
+      - name: Save QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Yimma-GAME009-Public-Release-QA-Evidence
+          path: final/evidence/*.png
+          if-no-files-found: warn

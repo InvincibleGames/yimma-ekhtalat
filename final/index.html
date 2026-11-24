@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#74231e">
+<meta name="description" content="يمّه اختلط! لعبة فرز بحرينية — خمسة عوالم و25 مرحلة">
+<title>يمّه اختلط! — Invincible Games</title>
+<link rel="icon" type="image/svg+xml" href="app-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+<header class="topbar">
+ <span class="studio-brand"><span class="studio-mark">▽</span><span>INVINCIBLE<br>GAMES</span></span>
+ <button class="mini-btn" id="backBtn" title="عودة" aria-label="عودة" hidden>↶</button>
+ <div class="top-title" id="headerTitle">يمّه اختلط!</div>
+ <div class="top-stats">
+  <span class="coinbar" aria-label="رصيد العملات"><span class="coin">★</span><b id="coinsTop">0</b></span>
+  <button class="mini-btn" id="audioBtn" title="الصوت" aria-label="تشغيل أو إيقاف الصوت">♫</button>
+  <button class="mini-btn" id="settingsBtn" title="الإعدادات" aria-label="الإعدادات">⚙</button>
+ </div>
+</header>
+<main id="screen" aria-live="polite"></main>
+<footer class="footer"><span>© INVINCIBLE GAMES · BAHRAIN</span><span>يمّه اختلط! · الإصدار التراثي الكامل</span></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="game.js" defer></script>
+</body>
+</html>
