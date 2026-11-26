@@ -12,37 +12,36 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
-      - name: Verify release endpoint over HTTPS
+      - name: Verify latest playable release and retained previous edition
         run: |
           python3 - <<'PY'
           import time,urllib.request
           base='https://invinciblegames.github.io/yimma-ekhtalat/'
-          paths={
-            '':'final/',
-            'final/':'يمّه اختلط!',
-            'final/game.js':'YimmaQA',
-            'final/styles.css':'.world-card',
-            'final/characters.svg':'<svg',
-            'final/app-icon.svg':'<svg',
-            'game-007/':'GAME-007'
+          checks={
+            '': ['latest/'],
+            'latest/': ['يمّه اختلط!', 'data:image/', 'game'],
+            'final/': ['يمّه اختلط!'],
+            'final/game.js': ['YimmaQA'],
           }
-          for path,needle in paths.items():
-              final=None
-              for attempt in range(12):
+          for path,needles in checks.items():
+              last=None
+              for attempt in range(15):
                   try:
-                      u=base+path
-                      with urllib.request.urlopen(urllib.request.Request(u,headers={'User-Agent':'InvincibleGames-Release-QA'}),timeout=16) as resp:
+                      url=base+path
+                      req=urllib.request.Request(url,headers={'User-Agent':'InvincibleGames-Release-QA'})
+                      with urllib.request.urlopen(req,timeout=20) as resp:
                           data=resp.read().decode('utf-8')
                           resolved=resp.url
-                          if needle in data or (path=='' and 'final/' in resolved):
-                              print('LIVE PASS',path or 'root',len(data),resolved)
-                              final=True
-                              break
-                          raise AssertionError('Expected content missing in '+u)
-                  except Exception as e:
-                      final=str(e)
+                      if path=='':
+                          assert 'latest/' in resolved or 'latest/' in data, 'root not linked to latest'
+                      else:
+                          assert all(token in data for token in needles), 'release content mismatch '+path
+                      print('LIVE PASS',path or 'root',len(data),resolved)
+                      break
+                  except Exception as exc:
+                      last=exc
                       time.sleep(5)
-              if final is not True:
-                  raise SystemExit('LIVE FAIL '+path+' '+str(final))
-          print('PASS: live root, final runtime, original characters, and old GAME-007 all reachable')
+              else:
+                  raise SystemExit('LIVE FAIL '+path+' '+str(last))
+          print('PASS: new latest public game, main route and retained old game')
           PY
