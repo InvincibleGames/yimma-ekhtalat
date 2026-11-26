@@ -63,7 +63,8 @@
 .game-screen .sorting-tray-layer{top:22%;left:2%;width:96%;height:51%}
 .game-screen .playfield{top:28%;bottom:37%;left:5%;right:5%}
 .game-screen .play-item{width:clamp(43px,13vw,59px);height:clamp(43px,13vw,59px)}
-.game-screen .hud{top:3px;left:4px;right:4px;gap:2px;justify-content:center}
+.game-screen .hud{top:3px;left:4px;right:4px;gap:4px;justify-content:center}
+.game-screen .hud .hud-pill:nth-child(2),.game-screen .hud .hud-pill:nth-child(6){display:none}
 .game-screen .hud-pill{padding:3px 5px;font-size:11px;border-width:1px}
 .game-screen .bottom-tip{bottom:23%;font-size:12px;padding:2px 9px}
 .stage-grid.stage-path{grid-template-columns:repeat(3,minmax(0,1fr));padding:30px 10px 48px;gap:21px 9px}
