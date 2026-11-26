@@ -1,0 +1,32 @@
+name: Two-Basket Original Design Acceptance
+on:
+  push:
+    branches: [fix/two-baskets-per-round-20261126]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-baskets-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Test two baskets in all 25 stages at desktop and mobile sizes
+        run: |
+          python3 -m http.server 8977 --directory . >/tmp/yimma-2basket.log 2>&1 &
+          sleep 2
+          node qa/two-baskets-smoke.cjs
+      - name: Archive evidence screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Yimma-Two-Baskets-Desktop-Mobile-25-Stage-QA
+          path: qa/two-baskets/*.png
+          if-no-files-found: warn
