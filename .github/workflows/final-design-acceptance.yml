@@ -1,0 +1,48 @@
+name: Final Original-Design Game Acceptance
+on:
+  push:
+    branches:
+      - feat/game-final-approved-20261126
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  final-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Confirm all five source tray files and JavaScript syntax
+        run: |
+          test -f latest/assets/trays/W01_Kitchen.svg
+          test -f latest/assets/trays/W02_Spice_Market.svg
+          test -f latest/assets/trays/W03_Sweets.svg
+          test -f latest/assets/trays/W04_Crafts.svg
+          test -f latest/assets/trays/W05_Pearl_Coast.svg
+          node --check latest/production-completion.js
+          node --check qa/production-completion.cjs
+      - name: Desktop/mobile game 25-stage and screen acceptance
+        run: |
+          python3 -m http.server 8977 --directory . >/tmp/final-game.log 2>&1 &
+          sleep 2
+          node qa/production-completion.cjs
+      - name: Original two-basket regression suite
+        run: node qa/two-baskets-smoke.cjs
+      - name: Complete historical art regression suite
+        run: node qa/art-fidelity-smoke.cjs
+      - name: Offline installability and touch sorting
+        run: node qa/offline-game.cjs
+      - name: Archive screenshots and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Yimma-Final-Production-Design-QA
+          path: qa/completion-evidence/*.png
+          if-no-files-found: warn
