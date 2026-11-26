@@ -1,0 +1,28 @@
+const {chromium}=require('playwright'),assert=require('node:assert/strict');
+(async()=>{
+ const browser=await chromium.launch();
+ const ctx=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'allow'});
+ const p=await ctx.newPage(),errs=[];
+ p.on('pageerror',e=>errs.push(e.message));
+ await p.goto('http://127.0.0.1:8977/latest/');
+ await p.locator('.logo').waitFor();
+ const manifest=await p.locator('link[rel=manifest]').getAttribute('href');
+ assert.equal(manifest,'manifest.webmanifest');
+ await p.waitForFunction(()=>navigator.serviceWorker?.controller!==null,{timeout:45000});
+ const ready=await p.evaluate(async()=>{const r=await navigator.serviceWorker.ready;return {state:r.active?.state,scope:r.scope}});
+ assert.equal(ready.state,'activated');
+ await ctx.setOffline(true);
+ await p.reload({waitUntil:'domcontentloaded'});
+ await p.locator('.logo').waitFor();
+ await p.evaluate(()=>{save.music=false;start(1,1)});
+ const tray=await p.evaluate(async()=>{let t=document.querySelector('.sorting-tray-layer');await t.decode();return t.naturalWidth});
+ assert.ok(tray>0);
+ assert.equal(await p.locator('.basket').count(),2);
+ const count=await p.evaluate(async()=>Promise.all(game.items.map(async x=>{const i=new Image();i.src=itemImage(W[world].items[x.type][0]);await i.decode();return !!i.naturalWidth})));
+ assert.ok(count.every(Boolean));
+ await p.evaluate(()=>{while(!game.over){const o=game.items[0];sortInto(o.id,o.type)}});
+ assert.equal(await p.locator('.result-box').count(),1);
+ assert.deepEqual(errs,[]);
+ console.log('PASS: offline manifest, service worker activation, full HTML reload, World 2 tray, object images, two baskets, saved gameplay');
+ await browser.close();
+})().catch(e=>{console.error('OFFLINE FAILURE',e);process.exit(1)});
