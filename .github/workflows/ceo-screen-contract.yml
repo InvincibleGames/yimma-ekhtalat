@@ -1,0 +1,32 @@
+name: CEO Complete Screen Contract QA
+on:
+  push:
+    branches: [feat/complete-ceo-screen-contract-20261126]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Verify screen flow, item art, 25 stages and both device sizes
+        run: |
+          python3 -m http.server 8977 --directory . >/tmp/yimma-screens.log 2>&1 &
+          sleep 2
+          node qa/ceo-screen-contract.cjs
+      - name: Upload 14-screen QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Yimma-CEO-Screen-Contract-Desktop-Mobile
+          path: qa/ceo-screen-contract/*.png
+          if-no-files-found: warn
