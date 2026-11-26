@@ -1,0 +1,22 @@
+{
+  "id": "./",
+  "name": "يمّه اختلط! — Invincible Games",
+  "short_name": "يمّه اختلط!",
+  "description": "لعبة فرز بحرينية بخمسة عوالم وخمس وعشرين مرحلة",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#521624",
+  "theme_color": "#84231F",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "../final/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
