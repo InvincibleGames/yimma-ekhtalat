@@ -115,6 +115,7 @@ stages=function(w=world){
 home=function(){legacy.home();refreshCosmetics()};
 draw=function(title,html,which){
  legacy.draw(title,html,which);
+ if(which!=='home')document.querySelector('.production-splash')?.remove();
  if(which!=='game')stopMusic();
 };
 start=function(w=world,l=level){legacy.start(w,l);startMusic()};
