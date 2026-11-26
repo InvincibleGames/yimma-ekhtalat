@@ -227,6 +227,7 @@ document.addEventListener('click',e=>{
 });
 currentProgress();if(save.music===undefined)save.music=true;
 applyPreferences();refreshCosmetics();safeStore();
+if('serviceWorker' in navigator && ['https:','http:'].includes(location.protocol)){navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(()=>{});}
 if(!sessionStorage.getItem('yimma-splash-shown')){
  try{sessionStorage.setItem('yimma-splash-shown','1')}catch(e){}
  const splash=document.createElement('div');splash.className='production-splash';
