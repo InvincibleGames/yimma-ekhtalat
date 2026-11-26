@@ -37,6 +37,8 @@ jobs:
         run: node qa/two-baskets-smoke.cjs
       - name: Complete historical art regression suite
         run: node qa/art-fidelity-smoke.cjs
+      - name: Offline installability and touch sorting
+        run: node qa/offline-game.cjs
       - name: Archive screenshots and evidence
         if: always()
         uses: actions/upload-artifact@v4
