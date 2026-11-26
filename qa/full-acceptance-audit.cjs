@@ -61,8 +61,8 @@ for(let w=0;w<5;w++)for(let l=1;l<=5;l++){
  const result=await p.evaluate(([w,l])=>{save.unlocked=25;start(w,l);const pair=game.activeTypes.slice(),bins=[...document.querySelectorAll('.basket')].map(x=>Number(x.dataset.bin));let valid=game.items.every(x=>pair.includes(x.type)),max=game.items.length;while(!game.over){let it=game.items[0];if(!pair.includes(it.type))valid=false;sortInto(it.id,it.type);max=Math.max(max,game.items.length)}return {pair,bins,valid,max,stars:save.stars[w*5+l]}},[w,l]);
  check(result.pair.length===2&&new Set(result.pair).size===2&&result.pair.join(',')===result.bins.join(',')&&result.valid&&result.max<=6&&result.stars>=1,'world '+(w+1)+' stage '+l+' pair, routing, completion');
 }
-const decoded=await p.evaluate(async()=>Promise.all(W.flatMap(w=>w.items).map(async ([id])=>{const i=new Image();i.src=itemImage(id);try{await i.decode();return true}catch(e){return false}})));
-check(decoded.length===23&&decoded.every(Boolean),'23 original categorized assets decoded');
+const decoded=await p.evaluate(async()=>Promise.all(W.flatMap(w=>w.items).map(async ([id])=>{const i=new Image();i.src=itemImage(id);try{await i.decode();return{id,ok:true}}catch(e){return{id,ok:false,src:i.src,error:String(e)}}}))); console.log('SPRITE_DECODE_RESULT',JSON.stringify(decoded));
+check(decoded.length===23&&decoded.every(x=>x.ok),'23 original categorized assets decoded');
 report.gaps.push('Level-map screen is stage-grid, not illustrated route/path map');
 report.gaps.push('Challenges are permanent milestones, not daily/weekly system');
 report.gaps.push('Audio is synthesized feedback only, no original 5-world music');
