@@ -1,0 +1,32 @@
+name: Yimma Full Independent Game Audit
+on:
+  push:
+    branches: [qa/full-game-audit-20261126]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright browser
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Run all functional and visual-contract checks
+        run: |
+          python3 -m http.server 8977 --directory . >/tmp/yimma-audit.log 2>&1 &
+          sleep 2
+          node qa/full-acceptance-audit.cjs
+      - name: Archive all screenshots and detailed report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Yimma-Full-Game-Audit-20261126
+          path: qa/full-audit-evidence/
+          if-no-files-found: warn
