@@ -6,6 +6,7 @@ for(const [mode,viewport,touch] of [['desktop',{width:1280,height:800},false],['
  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:8977/latest/');
  await page.locator('.logo').waitFor();
+ assert.equal(await page.locator('.menu-buttons [data-act]').count(),5,'CEO menu must retain five primary actions');
  for(const [action,selector,filename] of [
   ['tutorial','.tutorial-diagram','tutorial'],
   ['challenges','.challenge-row','challenges'],
@@ -15,6 +16,7 @@ for(const [mode,viewport,touch] of [['desktop',{width:1280,height:800},false],['
   ['collection','.list-grid','collection'],
   ['settings','.settings-row','settings']
  ]){
+  if(!(await page.locator('[data-act="'+action+'"]').count())){await page.locator('[data-act="more"]').first().click()}
   await page.locator('[data-act="'+action+'"]').first().click();
   assert.ok(await page.locator(selector).count()>0,action+' screen must display');
   await page.screenshot({path:'qa/ceo-screen-contract/'+mode+'_'+filename+'.png'});
